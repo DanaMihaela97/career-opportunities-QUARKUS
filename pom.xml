@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.career</groupId>
   <artifactId>career-opportunities</artifactId>
@@ -46,8 +46,13 @@
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-hibernate-orm-panache</artifactId>
+      <version>1.13.2.Final</version>
     </dependency>
-
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-hibernate-orm</artifactId>
+      <version>1.13.2.Final</version>
+    </dependency>
 
     <dependency>
       <groupId>io.quarkus</groupId>
@@ -63,6 +68,10 @@
       <artifactId>quarkus-resteasy-mutiny</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-flyway</artifactId>
+    </dependency>
 
     <dependency>
       <groupId>io.rest-assured</groupId>
@@ -142,4 +151,5 @@
       </properties>
     </profile>
   </profiles>
+
 </project>
