@@ -3,7 +3,7 @@ package com.career.opportunities.controller;
 import com.career.opportunities.entity.Job;
 import com.career.opportunities.service.JobService;
 import io.smallrye.mutiny.Uni;
-
+import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -16,7 +16,6 @@ import java.util.List;
 public class JobController  {
     @Inject
     JobService jobService;
-
 
 
     @POST

@@ -1,7 +1,5 @@
 package com.career.opportunities.controller;
 
-
-import com.career.opportunities.entity.Job;
 import com.career.opportunities.entity.User;
 import com.career.opportunities.service.UserService;
 import io.smallrye.mutiny.Uni;
@@ -10,8 +8,6 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.List;
-
 @Path("/users")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
