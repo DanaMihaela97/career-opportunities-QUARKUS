@@ -1,5 +1,6 @@
 package com.career.opportunities.controller;
 
+import com.career.opportunities.config.SnsPublisher;
 import com.career.opportunities.entity.Job;
 import com.career.opportunities.service.JobService;
 import io.smallrye.mutiny.Uni;
@@ -16,18 +17,21 @@ public class JobController  {
     @Inject
     JobService jobService;
 
+    @Inject
+    SnsPublisher snsPublisher;
+
 
     @POST
     public Uni<Response> createJob(Job job) {
         return jobService.createJob(job)
                 .onItem().transform(createdJob -> {
 
-//                    String subject = "New Jobs Posted!";
-//                    String bodyText = "A new job has been posted on the platform. Check out the latest jobs at our website.";
-//                    String platformUrl = "http://localhost:8080/jobs";
-//                    bodyText += "\n\nVisit us at: " + platformUrl;
-//
-//                    snsPublisher.sendEmail(subject, bodyText);
+                    String subject = "New Jobs Posted!";
+                    String bodyText = "A new job has been posted on the platform. Check out the latest jobs at our website.";
+                    String platformUrl = "http://localhost:8080/jobs";
+                    bodyText += "\n\nVisit us at: " + platformUrl;
+
+                    snsPublisher.sendEmail(subject, bodyText);
 
                     return Response.ok(createdJob)
                             .status(Response.Status.CREATED)
