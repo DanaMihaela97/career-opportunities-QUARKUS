@@ -7,6 +7,7 @@ import io.smallrye.mutiny.Uni;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import org.jboss.logging.Logger;
@@ -20,6 +21,7 @@ public class JobServiceImpl implements JobService {
     JobRepository jobRepository;
 
     @Override
+    @Transactional
     public Uni<Job> createJob(Job job) {
         return Uni.createFrom().item(() -> {
             try {
@@ -57,6 +59,7 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
+    @Transactional
     public Uni<Void> deleteJobById(Long id) {
         return Uni.createFrom().voidItem().invoke(() -> {
             try {
