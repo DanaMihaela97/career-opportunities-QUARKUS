@@ -1,6 +1,6 @@
 package com.career.opportunities.controller;
 
-import com.career.opportunities.config.SnsPublisher;
+import com.career.opportunities.config.SnsConfig;
 import com.career.opportunities.entity.Job;
 import com.career.opportunities.service.JobService;
 import io.smallrye.mutiny.Uni;
@@ -18,7 +18,7 @@ public class JobController  {
     JobService jobService;
 
     @Inject
-    SnsPublisher snsPublisher;
+    SnsConfig snsPublisher;
 
 
     @POST

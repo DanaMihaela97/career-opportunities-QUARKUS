@@ -8,14 +8,12 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 @ApplicationScoped
-public class SnsPublisher {
-
-    private final SnsClient snsClient;
+public class SnsConfig {
 
     @Inject
-    public SnsPublisher(SnsClient snsClient) {
-        this.snsClient = snsClient;
-    }
+    SnsClient snsClient;
+
+
     public void sendEmail(String subject, String bodyText) {
         PublishRequest request = PublishRequest.builder()
                 .topicArn("arn:aws:sns:us-east-1:211125574560:quarkus-sns")

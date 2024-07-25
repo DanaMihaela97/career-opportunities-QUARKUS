@@ -20,7 +20,7 @@ public class SnsClientProducer {
     @ConfigProperty(name = "quarkus.amazon.sns.secret-access-key")
     String secretAccessKey;
     @Produces
-    @ApplicationScoped
+    @CustomQualifier
     public SnsClient produceSnsClient() {
         return SnsClient.builder()
                 .region(Region.of(region))
