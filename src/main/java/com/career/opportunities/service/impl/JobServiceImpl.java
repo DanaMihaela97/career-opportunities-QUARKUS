@@ -10,6 +10,8 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+
+import io.smallrye.mutiny.unchecked.Unchecked;
 import org.jboss.logging.Logger;
 
 @ApplicationScoped
@@ -23,7 +25,7 @@ public class JobServiceImpl implements JobService {
     @Override
     @Transactional
     public Uni<Job> createJob(Job job) {
-        return Uni.createFrom().item(() -> {
+        return Uni.createFrom().item(Unchecked.supplier(() -> {
             try {
                 jobRepository.persist(job);
                 return job;
@@ -31,19 +33,19 @@ public class JobServiceImpl implements JobService {
                 LOGGER.error("Error creating job", e);
                 throw new RuntimeException("Error creating job", e);
             }
-        });
+        }));
     }
 
     @Override
     public Uni<List<Job>> getAllJobs() {
-        return Uni.createFrom().item(() -> {
+        return Uni.createFrom().item(Unchecked.supplier(() -> {
             try {
                 return jobRepository.listAll();
             } catch (Exception e) {
                 LOGGER.error("Error retrieving all jobs", e);
                 throw new RuntimeException("Error retrieving all jobs", e);
             }
-        });
+        }));
     }
 
     @Override

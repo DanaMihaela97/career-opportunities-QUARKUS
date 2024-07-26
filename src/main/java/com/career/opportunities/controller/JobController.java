@@ -26,12 +26,12 @@ public class JobController  {
         return jobService.createJob(job)
                 .onItem().transform(createdJob -> {
 
-                    String subject = "New Jobs Posted!";
-                    String bodyText = "A new job has been posted on the platform. Check out the latest jobs at our website.";
-                    String platformUrl = "http://localhost:8080/jobs";
-                    bodyText += "\n\nVisit us at: " + platformUrl;
-
-                    snsPublisher.sendEmail(subject, bodyText);
+//                    String subject = "New Jobs Posted!";
+//                    String bodyText = "A new job has been posted on the platform. Check out the latest jobs at our website.";
+//                    String platformUrl = "http://localhost:8080/jobs";
+//                    bodyText += "\n\nVisit us at: " + platformUrl;
+//
+//                    snsPublisher.sendEmail(subject, bodyText);
 
                     return Response.ok(createdJob)
                             .status(Response.Status.CREATED)
