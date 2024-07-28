@@ -18,7 +18,7 @@ public class JobController  {
     JobService jobService;
 
     @Inject
-    SnsConfig snsPublisher;
+    SnsConfig sns;
 
 
     @POST
@@ -42,6 +42,7 @@ public class JobController  {
 
     @GET
     public Uni<List<Job>> getAllJobs() {
+        sns.sendEmail("Hello", "from sns!");
         return jobService.getAllJobs();
     }
 
