@@ -6,8 +6,8 @@ import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.http.urlconnection.UrlConnectionHttpClient;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.sns.SnsClient;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Produces;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Produces;
 
 @ApplicationScoped
 public class SnsClientProducer {

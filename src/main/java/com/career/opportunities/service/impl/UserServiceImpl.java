@@ -5,8 +5,8 @@ import com.career.opportunities.repository.UserRepository;
 import com.career.opportunities.service.UserService;
 import io.smallrye.mutiny.Uni;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 @ApplicationScoped
 public class UserServiceImpl implements UserService {
