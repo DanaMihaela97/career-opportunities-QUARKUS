@@ -22,9 +22,11 @@ public class JobController  {
 
 
     @POST
+    @Consumes(MediaType.APPLICATION_JSON)
     public Uni<Response> createJob(Job job) {
         return jobService.createJob(job)
                 .onItem().transform(createdJob -> {
+                    sns.sendEmail("Hello", "from sns!");
 
 //                    String subject = "New Jobs Posted!";
 //                    String bodyText = "A new job has been posted on the platform. Check out the latest jobs at our website.";
@@ -42,7 +44,6 @@ public class JobController  {
 
     @GET
     public Uni<List<Job>> getAllJobs() {
-        sns.sendEmail("Hello", "from sns!");
         return jobService.getAllJobs();
     }
 
