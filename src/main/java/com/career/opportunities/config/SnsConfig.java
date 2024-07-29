@@ -20,7 +20,7 @@ public class SnsConfig {
 
 
     public void sendEmail(String subject, String bodyText) {
-	PublishResponse response = snsClient.publish(p -> p.topicArn(topicArn).message(bodyText).subject(subject));
+	PublishResponse response = snsClient.publish(p -> p.topicArn(topicArn).message(bodyText));
     }
 
     public void subscribe(String userEmail) {
