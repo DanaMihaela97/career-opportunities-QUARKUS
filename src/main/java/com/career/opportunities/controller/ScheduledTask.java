@@ -2,7 +2,7 @@ package com.career.opportunities.controller;
 
 import io.quarkus.scheduler.Scheduled;
 import java.util.logging.Logger;
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class ScheduledTask{

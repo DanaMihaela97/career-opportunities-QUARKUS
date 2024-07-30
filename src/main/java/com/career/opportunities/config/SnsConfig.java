@@ -1,35 +1,29 @@
 package com.career.opportunities.config;
 
-import software.amazon.awssdk.services.sns.SnsClient;
-import software.amazon.awssdk.services.sns.model.PublishRequest;
-import software.amazon.awssdk.services.sns.model.SubscribeRequest;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
+import software.amazon.awssdk.services.sns.SnsClient;
+import software.amazon.awssdk.services.sns.model.SubscribeResponse;
+import software.amazon.awssdk.services.sns.model.PublishResponse;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 @ApplicationScoped
 public class SnsConfig {
 
     @Inject
-    @CustomQualifier
     SnsClient snsClient;
+
+    @ConfigProperty(name = "topic.arn")
+    String topicArn;
 
 
     public void sendEmail(String subject, String bodyText) {
-        PublishRequest request = PublishRequest.builder()
-                .topicArn("arn:aws:sns:us-east-1:211125574560:quarkus-sns")
-                .subject(subject)
-                .message(bodyText)
-                .build();
-        snsClient.publish(request);
+        snsClient.publish(builder -> builder.topicArn(topicArn).message(bodyText).subject(subject));
     }
 
     public void subscribe(String userEmail) {
-        SubscribeRequest subscribeRequest = SubscribeRequest.builder()
-                .topicArn("arn:aws:sns:us-east-1:211125574560:quarkus-sns")
-                .protocol("email")
-                .endpoint(userEmail)
-                .build();
-        snsClient.subscribe(subscribeRequest);
+    	SubscribeResponse response = snsClient.subscribe(s -> s.topicArn(topicArn).protocol("email").endpoint(userEmail));
     }
 }

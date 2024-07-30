@@ -5,9 +5,9 @@ import com.career.opportunities.repository.JobRepository;
 import com.career.opportunities.service.JobService;
 import io.smallrye.mutiny.Uni;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.transaction.Transactional;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 

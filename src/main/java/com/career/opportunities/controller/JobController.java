@@ -3,29 +3,30 @@ package com.career.opportunities.controller;
 import com.career.opportunities.config.SnsConfig;
 import com.career.opportunities.entity.Job;
 import com.career.opportunities.service.JobService;
+import io.smallrye.common.annotation.Blocking;
 import io.smallrye.mutiny.Uni;
-import javax.inject.Inject;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/jobs")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@Blocking
 public class JobController  {
     @Inject
     JobService jobService;
 
     @Inject
-    SnsConfig snsPublisher;
+    SnsConfig sns;
 
 
     @POST
     public Uni<Response> createJob(Job job) {
         return jobService.createJob(job)
                 .onItem().transform(createdJob -> {
-
 //                    String subject = "New Jobs Posted!";
 //                    String bodyText = "A new job has been posted on the platform. Check out the latest jobs at our website.";
 //                    String platformUrl = "http://localhost:8080/jobs";
@@ -42,6 +43,8 @@ public class JobController  {
 
     @GET
     public Uni<List<Job>> getAllJobs() {
+        sns.sendEmail("Hello", "from sns!");
+
         return jobService.getAllJobs();
     }
 
