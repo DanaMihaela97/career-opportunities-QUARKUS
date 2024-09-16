@@ -1,8 +1,8 @@
 # career-opportunities project
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
-
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+I tried to rebuild the backend of the Career Opportunities application (a career platform that allows candidates to search for jobs filtered by cities, complete a form, and upload their CVs) using a different programming language, namely Quarkus.
+At the moment, I just have the application deployed on AWS EC2.
+I have set up AWS SNS to send an email to all subscribers when a new job is posted, and AWS RDS for the database.
 
 ## Running the application in dev mode
 
